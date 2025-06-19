@@ -17,4 +17,8 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
           docker buildx ls
-          docker buildx --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 yingying6/flask-redis:latest .
+          docker buildx build \
+            --push \
+            --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+            -t yingying6/flask-redis:latest \
+            .
